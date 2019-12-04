@@ -10,18 +10,32 @@ class App extends Component {
 	state = {};
 	render() {
 	return (
+		<React.Fragment>
+		<MDBContainer>
+		<MDBRow>
+      <MDBCol md="9">
+        <Event/>
+        <Event/>
+      </MDBCol>
+      <MDBCol md="3" />
+     </MDBRow>
+		</MDBContainer>
+		</React.Fragment>
+	);
+	}
+}
+
+class Event extends Component {
+	state = {};
+	render() {
+		return (
 			<React.Fragment>
-			<MDBContainer>
-					<MDBRow>
-					<MDBCol lg="6">Left column</MDBCol>
-					<MDBCol lg="6">Right column</MDBCol>
-					</MDBRow>
-			</MDBContainer>
+				<h3>9:00 - Title</h3>
 			</React.Fragment>
 	);
 	}
 }
 
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App/>, document.getElementById("root"));
 
