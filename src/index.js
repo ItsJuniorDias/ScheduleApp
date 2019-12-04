@@ -14,8 +14,7 @@ class App extends Component {
 		<MDBContainer>
 		<MDBRow>
       <MDBCol md="9">
-        <Event/>
-        <Event/>
+			<Event title="Call with Ana" time="10:00"/>
       </MDBCol>
       <MDBCol md="3" />
      </MDBRow>
@@ -24,15 +23,35 @@ class App extends Component {
 	);
 	}
 }
-
 class Event extends Component {
-	state = {};
+	state = {
+		time: "09:00",
+		title: "My State",
+	};
+	constructor() {
+		super();
+		this.vatTime = "12:00";
+		this.varTitle = "My variable Title"
+	} 
+
 	render() {
 		return (
 			<React.Fragment>
-				<h3>9:00 - Title</h3>
-			</React.Fragment>
-	);
+        {/* This is genarated from state */}
+        <h3>
+          State:
+          {this.state.time} - {this.state.title}
+          <button
+            onClick={() => {
+              this.setState({ title: "My NEW State title"});
+              console.log(this.state.title);
+            }}
+          >
+            Change state title
+          </button>
+        </h3>
+      </React.Fragment>
+		);
 	}
 }
 
