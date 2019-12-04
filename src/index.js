@@ -63,7 +63,6 @@ class App extends Component {
 }
 class Event extends Component {
 
-
 	render() {
 		return (
 			<React.Fragment>
