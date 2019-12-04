@@ -11,9 +11,28 @@ class App extends Component {
 		super(props);
 		this.state = {
 			events: [
-				{ time: "10:00", title: "Breakfast with Simon" },
-				{ time: "10:30", title: "Daily Standup Meeting (recurring)" },
-				{ time: "11:00", title: "Call with HRs" }
+				{
+					id: 1,
+					time: "10:00",
+					title: "Breakfast with Simon",
+					location: "Lounge Caffe",
+					description: "Discuss Q3 targets"
+				},
+				{
+					id: 2,
+					time: "10:30",
+					title: "Daily Standup Meeting (recurring)",
+					location: "Warsaw Spire Office"
+				},
+				{ id: 3, time: "11:00", title: "Call with HRs" },
+				{
+					id: 4,
+					time: "11:00",
+					title: "Lunch with Timothy",
+					location: "Canteen",
+					description:
+						"Project evaluation ile declaring a variable and using an if statement is a fine way to conditionally render a component, sometimes you might want to use a"
+				}
 			]
 		};
 	}
@@ -25,7 +44,14 @@ class App extends Component {
 		<MDBRow>
       <MDBCol md="9">
 		  {this.state.events.map(event => (
-        <Event time={event.time} title={event.title} />
+				<Event 
+		    key={event.id}
+        id={event.id}
+        time={event.time}
+        title={event.title}
+        location={event.location}
+        description={event.description}
+				/>
        ))}
       </MDBCol>
       <MDBCol md="3" />
@@ -41,9 +67,11 @@ class Event extends Component {
 	render() {
 		return (
 			<React.Fragment>
-        <h3>
-            {this.props.time} - {this.props.title}
-          </h3>
+       <h3>
+        {this.props.time} - {this.props.title}
+       </h3>
+       <h6>Location: {this.props.location}</h6>
+       <p>Desc: {this.props.description}</p>
       </React.Fragment>
 		);
 	}
