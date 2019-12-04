@@ -17,21 +17,6 @@ class App extends Component {
 			]
 		};
 	}
-	
-	myLoopFunction() {
-    var myArray = [];
-    var i;
-    for (i = 0; i < this.state.events.length; i++) {
-      myArray[i] = (
-        <Event
-          time={this.state.events[i].time}
-          title={this.state.events[i].title}
-        />
-      );
-    }
-    return myArray;
-	}
-
 
 	render() {
 	return (
@@ -39,7 +24,9 @@ class App extends Component {
 		<MDBContainer>
 		<MDBRow>
       <MDBCol md="9">
-		  {this.myLoopFunction()}
+		  {this.state.events.map(event => (
+        <Event time={event.time} title={event.title} />
+       ))}
       </MDBCol>
       <MDBCol md="3" />
      </MDBRow>
