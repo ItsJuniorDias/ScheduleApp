@@ -7,14 +7,39 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import "./index.css"
 
 class App extends Component {
-	state = {};
+	constructor(props) {
+		super(props);
+		this.state = {
+			events: [
+				{ time: "10:00", title: "Breakfast with Simon" },
+				{ time: "10:30", title: "Daily Standup Meeting (recurring)" },
+				{ time: "11:00", title: "Call with HRs" }
+			]
+		};
+	}
+	
+	myLoopFunction() {
+    var myArray = [];
+    var i;
+    for (i = 0; i < this.state.events.length; i++) {
+      myArray[i] = (
+        <Event
+          time={this.state.events[i].time}
+          title={this.state.events[i].title}
+        />
+      );
+    }
+    return myArray;
+	}
+
+
 	render() {
 	return (
 		<React.Fragment>
 		<MDBContainer>
 		<MDBRow>
       <MDBCol md="9">
-			<Event title="Call with Ana" time="10:00"/>
+		  {this.myLoopFunction()}
       </MDBCol>
       <MDBCol md="3" />
      </MDBRow>
