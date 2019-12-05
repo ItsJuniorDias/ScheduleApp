@@ -17,26 +17,62 @@ class App extends Component {
 					time: "10:00",
 					title: "Breakfast with Simon",
 					location: "Lounge Caffe",
-					description: "Discuss Q3 targets"
+          description: "Discuss Q3 targets",
+          modal: false,
 				},
 				{
 					id: 2,
 					time: "10:30",
 					title: "Daily Standup Meeting (recurring)",
-					location: "Warsaw Spire Office"
+          location: "Warsaw Spire Office",
+          modal: false,
 				},
-				{ id: 3, time: "11:00", title: "Call with HRs" },
+				{ id: 3, time: "11:00", title: "Call with HRs",modal: false, },
 				{
 					id: 4,
 					time: "11:00",
 					title: "Lunch with Timothy",
-					location: "Canteen",
+          location: "Canteen",
+          modal: false,
 					description:
 						"Project evaluation ile declaring a variable and using an if statement is a fine way to conditionally render a component, sometimes you might want to use a"
 				}
 			]
 		};
   }
+
+  handleInputChange = inputName => value => {
+    const nextValue = value;
+    this.setState({
+      [inputName]:nextValue
+    });
+   
+  };
+
+  addEvent = () => {
+    var newArray = [...this.state.events];
+    newArray.push ({
+      id: newArray.length ? newArray[newArray.length - 1].id +1 :1,
+      time: this.state.time,
+      title:this.state.title,
+      location: this.state.location,
+      description: this.state.description,
+      value: this.var > 5 ? "Its's grater then 5" : "Its lower or equal 5"
+    });
+    this.setState({ events: newArray});
+    this.setState({
+      time: "",
+      title: "",
+      location: "",
+      description: ""
+    });
+  };
+
+  toggleModal = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
   
   handleDelete = eventId => {
     const events = this.state.events.filter(e =>  e.id !== eventId);
@@ -65,7 +101,7 @@ class App extends Component {
             </div>
             <MDBRow className="mb-4">
               <MDBCol xl="3" md="6" className="mx-auto text-center">
-                <MDBBtn color="info" rounded>
+                <MDBBtn color="info" rounded onClick={this.toggleModal}>
                   Add Event
                 </MDBBtn>
               </MDBCol>
@@ -99,6 +135,62 @@ class App extends Component {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+
+     {/* Modal code below: */}
+     <MDBModal isOpen={this.state.modal} toggle={this.toggleModal}> 
+       <MDBModalHeader className="text-center"
+       titleClass="w-100 font-weight-bold"
+       toggle={this.toggleModal}
+       > 
+         Add new event
+       </MDBModalHeader>
+       <MDBModalBody>
+      <form className="mx-3 grey-text">
+          <MDBInput
+            name="time"
+            label="Time"
+            icon="clock"
+            hint="12:30"
+            group
+            type="text"
+            getValue={this.handleInputChange("time")}
+          />
+          <MDBInput
+            name="title"
+            label="Title"
+            icon="edit"
+            hint="Briefing"
+            group
+            type="text"
+            getValue={this.handleInputChange("title")}
+          />
+          <MDBInput
+            name="location"
+            label="Location (optional)"
+            icon="map"
+            group
+            type="text"
+            getValue={this.handleInputChange("location")}
+          />
+          <MDBInput
+            name="description"
+            label="Description (optional)"
+            icon="sticky-note"
+            group
+            type="textarea"
+            getValue={this.handleInputChange("description")}
+          />
+        </form>
+      </MDBModalBody>
+       <MDBModalFooter className="justify-content-center"> 
+          <MDBBtn color="info" onClick={() => {
+            this.toggleModal();
+            this.addEvent();
+          }}> 
+            Add
+          </MDBBtn>
+       </MDBModalFooter>
+     </MDBModal>
     </React.Fragment>
     );
   }
@@ -126,7 +218,7 @@ class Event extends Component {
 								<React.Fragment> 
 									<p className="font-smaller mb-0">
 									 	<MDBIcon icon="location-arrow" />
-										 {this.props.location}
+										{this.props.location}
 									</p>
 								</React.Fragment>
 							)}
