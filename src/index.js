@@ -5,7 +5,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter,
 	MDBIcon,MDBBadge, MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import "./index.css"
+
 
 class App extends Component {
 	constructor(props) {
@@ -22,13 +22,22 @@ class App extends Component {
 				{
 					id: 2,
 					time: "10:30",
-					title: "Daily Standup Meeting",
-					location: "Warsaw Spire Office",
-					description: "Meeting World!"
+					title: "Daily Standup Meeting (recurring)",
+					location: "Warsaw Spire Office"
 				},
+				{ id: 3, time: "11:00", title: "Call with HRs" },
+				{
+					id: 4,
+					time: "11:00",
+					title: "Lunch with Timothy",
+					location: "Canteen",
+					description:
+						"Project evaluation ile declaring a variable and using an if statement is a fine way to conditionally render a component, sometimes you might want to use a"
+				}
 			]
 		};
 	}
+
 
 	render() {
     return (
