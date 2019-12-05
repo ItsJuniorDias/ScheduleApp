@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter,
+	MDBIcon,MDBBadge, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import "./index.css"
 
 class App extends Component {
@@ -21,8 +22,9 @@ class App extends Component {
 				{
 					id: 2,
 					time: "10:30",
-					title: "Daily Standup Meeting (recurring)",
-					location: "Warsaw Spire Office"
+					title: "Daily Standup Meeting",
+					location: "Warsaw Spire Office",
+					description: "Meeting World!"
 				},
 			]
 		};
@@ -57,11 +59,31 @@ class Event extends Component {
 	render() {
 		return (
 			<React.Fragment>
-       <h3>
-        {this.props.time} - {this.props.title}
-       </h3>
-       <h6>Location: {this.props.location}</h6>
-       <p>Desc: {this.props.description}</p>
+				<div className="media mt-1">  
+           <h3 className="h3-responsive font-weight-bold mr-3"> 
+             {this.props.time}
+					 </h3>
+					 <div>
+						 <MDBBadge color="danger" className="m1-2 float-right"> 
+               -
+						 </MDBBadge>
+						 <h6 className="mt-0 font-weight-bold"> {this.props.title} </h6> {" "}
+						 <hr className="hr-bold my-2"/>
+						  {this.props.location && (
+								<React.Fragment> 
+									<p className="font-smaller mb-0">
+									 	<MDBIcon icon="location-arrow" />
+										 {this.props.location}
+									</p>
+								</React.Fragment>
+							)}
+					 </div>
+				</div>
+				 {this.props.description && (
+					 <p className="p-2 mb-4 blue-grey lighten-5 blue-grey lighten-5"> 
+						 {this.props.description}
+					 </p>
+				 )}
       </React.Fragment>
 		);
 	}
