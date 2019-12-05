@@ -24,15 +24,6 @@ class App extends Component {
 					title: "Daily Standup Meeting (recurring)",
 					location: "Warsaw Spire Office"
 				},
-				{ id: 3, time: "11:00", title: "Call with HRs" },
-				{
-					id: 4,
-					time: "11:00",
-					title: "Lunch with Timothy",
-					location: "Canteen",
-					description:
-						"Project evaluation ile declaring a variable and using an if statement is a fine way to conditionally render a component, sometimes you might want to use a"
-				}
 			]
 		};
 	}
