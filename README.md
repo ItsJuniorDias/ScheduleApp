@@ -16,6 +16,9 @@ Connect with me at [LinkedIn](https://www.linkedin.com/in/alexandre-junior-23689
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Configuration
+ - Configuration **Router-Dom** , to organize pagination between routes;
+
 ## Available Scripts
 
 In the project directory, you can run:
